@@ -1,0 +1,5 @@
+@import "../../styles/components/pageDefault";
+
+.home_section {
+    @include pageDefaultStyle;
+}

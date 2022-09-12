@@ -2,8 +2,10 @@ import styles from "./styles.module.scss";
 
 export function Home() {
   return (
-    <>
-      <h1>Welcome </h1>
-    </>
+    <section className={styles.home_section}>
+      <header>
+        <h1>Welcome</h1>
+      </header>
+    </section>
   );
 }
