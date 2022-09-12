@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormSignInSignUp } from "../../shared/components/sign_in_sign_up/FormSignInSignUp";
 
 function LoginForm() {
@@ -18,7 +20,8 @@ function LoginForm() {
           <button className={styles.submit_button}>Submit</button>
         </div>
         <div className={styles.register_area}>
-          <span>register</span>
+          <span>Register</span>
+          <FontAwesomeIcon icon={faArrowRight} />
         </div>
       </footer>
     </FormSignInSignUp>
