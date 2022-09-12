@@ -53,7 +53,12 @@ form {
 
     .sign_in_area {
         justify-content: flex-start;
-        gap: 10px;
-        padding: 0 10px;
+        a {
+            display: flex;
+            gap: 10px;
+            padding: 0 10px;
+            text-decoration: none;
+            color: $Black;
+        }
     }
 }

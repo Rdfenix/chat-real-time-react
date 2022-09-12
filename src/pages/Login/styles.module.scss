@@ -52,7 +52,12 @@ form {
 
     .register_area {
         justify-content: flex-end;
-        gap: 10px;
-        padding: 0 10px;
+        a {
+            display: flex;
+            text-decoration: none;
+            gap: 10px;
+            padding: 0 10px;
+            color: $Black;
+        }
     }
 }

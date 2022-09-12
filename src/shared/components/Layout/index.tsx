@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import styles from "./styles.module.scss";
 import {
   faComment,
@@ -17,6 +17,10 @@ export function Layout() {
     setOpened(!opened);
   }
 
+  function setActiveClass(prop: { isActive: boolean }): string {
+    return prop.isActive ? styles.active_link : "";
+  }
+
   const activeAdded = opened
     ? `${styles.sidebar} ${styles.active}`
     : ` ${styles.sidebar}`;
@@ -32,16 +36,16 @@ export function Layout() {
         </header>
         <ul className={styles.nav_list}>
           <li>
-            <Link to={""}>
+            <NavLink className={setActiveClass} to="/chat">
               <FontAwesomeIcon icon={faComment} inverse />
               <span className={styles.link_name}>Chats</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={""}>
+            <NavLink className={setActiveClass} to="/home">
               <FontAwesomeIcon icon={faHouse} inverse />
               <span className={styles.link_name}>Home</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <div className={styles.profile_content}>

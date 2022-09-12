@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Routes, Route } from "react-router-dom";
+import { Chat } from "./pages/Chat";
 import { Home } from "./pages/Home";
 import { LoginPage } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
@@ -13,6 +14,7 @@ function App() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/" element={<Layout />}>
         <Route path="home" element={<Home />} />
+        <Route path="chat" element={<Chat />} />
       </Route>
     </Routes>
   );

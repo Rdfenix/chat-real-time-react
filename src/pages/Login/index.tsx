@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormSignInSignUp } from "../../shared/components/sign_in_sign_up/FormSignInSignUp";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   return (
@@ -20,8 +21,10 @@ function LoginForm() {
           <button className={styles.submit_button}>Submit</button>
         </div>
         <div className={styles.register_area}>
-          <span>Register</span>
-          <FontAwesomeIcon icon={faArrowRight} />
+          <Link to="/signup">
+            <span>Register</span>
+            <FontAwesomeIcon icon={faArrowRight} />
+          </Link>
         </div>
       </footer>
     </FormSignInSignUp>
