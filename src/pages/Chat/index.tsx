@@ -1,16 +1,31 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 
-function ChatRoomCard() {
+type ChatRoomCardProps = {
+  deleteChat: () => void;
+  chatTitle: string;
+};
+
+function ChatRoomCard({ deleteChat, chatTitle }: ChatRoomCardProps) {
   return (
-    <div className={styles.chat_room}>
-      <span>Chat Title</span>
-    </div>
+    <Link to={""} className={styles.chat_room}>
+      <span>{chatTitle}</span>
+      <button onClick={() => deleteChat()}>
+        <FontAwesomeIcon icon={faTrash} />
+      </button>
+    </Link>
   );
 }
 
 export function Chat() {
+  function deleteChatRoom(data: string): void {
+    console.log(data);
+  }
+
   return (
     <section className={styles.chat_section}>
       <header className={styles.chat_page_header}>
@@ -23,7 +38,10 @@ export function Chat() {
         </span>
       </div>
       <div className={styles.chat_wrapper}>
-        <ChatRoomCard />
+        <ChatRoomCard
+          chatTitle="Chat Title"
+          deleteChat={() => deleteChatRoom("test")}
+        />
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 @import "../../styles/components/pageDefault";
 @import "../../styles/abstracts/variables";
 @import "../../styles/components/card";
+@import "../../styles/components/button";
 
 .chat_section {
     @include pageDefaultStyle;
@@ -46,6 +47,17 @@
     width: 230px;
     height: 120px;
     transition: all 0.5s ease;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-decoration: none;
+    color: $Black;
+
+    button {
+        @include button_default;
+        padding: 6px;
+        background-color: transparent;
+    }
 
     &:hover {
         transform: scale(1.2);
