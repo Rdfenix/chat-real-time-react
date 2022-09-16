@@ -1,5 +1,53 @@
 @import "../../styles/components/pageDefault";
+@import "../../styles/abstracts/variables";
+@import "../../styles/components/card";
 
 .chat_section {
     @include pageDefaultStyle;
+    flex-direction: column;
+    overflow: auto;
+
+    .chat_page_header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+        padding: 0 0 10px 0;
+
+        h1 {
+            font-size: 35px;
+            font-family: $RobotoBold;
+        }
+        h2 {
+            font-size: 16px;
+        }
+    }
+
+    .chat_info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0;
+        font-family: $RobotoItalic;
+        font-size: 14px;
+    }
+
+    .chat_wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+}
+
+.chat_room {
+    @include card_default;
+    width: 230px;
+    height: 120px;
+    transition: all 0.5s ease;
+
+    &:hover {
+        transform: scale(1.2);
+    }
 }
