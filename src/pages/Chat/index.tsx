@@ -8,11 +8,12 @@ import styles from "./styles.module.scss";
 type ChatRoomCardProps = {
   deleteChat: () => void;
   chatTitle: string;
+  chatId: any;
 };
 
-function ChatRoomCard({ deleteChat, chatTitle }: ChatRoomCardProps) {
+function ChatRoomCard({ deleteChat, chatTitle, chatId }: ChatRoomCardProps) {
   return (
-    <Link to={""} className={styles.chat_room}>
+    <Link to={`room/${chatId}`} className={styles.chat_room}>
       <span>{chatTitle}</span>
       <button onClick={() => deleteChat()}>
         <FontAwesomeIcon icon={faTrash} />
@@ -40,6 +41,7 @@ export function Chat() {
       <div className={styles.chat_wrapper}>
         <ChatRoomCard
           chatTitle="Chat Title"
+          chatId="test"
           deleteChat={() => deleteChatRoom("test")}
         />
       </div>
