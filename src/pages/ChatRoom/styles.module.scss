@@ -1,0 +1,35 @@
+@import "../../styles/components/pageDefault";
+@import "../../styles/abstracts/variables";
+
+.chat_room_section {
+    @include pageDefaultStyle;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $DodgeBlue;
+
+    .chat_room_header {
+        background-color: $White;
+        width: 100%;
+        height: 90px;
+        display: flex;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    .chat_room_content {
+        width: 100%;
+        background: $White;
+        height: 64%;
+        border-radius: 4px;
+        padding: 10px;
+        overflow: auto;
+    }
+    .chat_room_footer {
+        background: $White;
+        width: 100%;
+        height: 15%;
+        padding: 10px;
+        border-radius: 4px;
+    }
+}
