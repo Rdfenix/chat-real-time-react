@@ -1,6 +1,61 @@
 import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 
+function TalkList() {
+  return (
+    <>
+      <div className={styles.chat_row_you}>
+        <div className={`${styles.conversation} ${styles.you}`}>
+          fdsafsdasdfdasfadsfdsa fdasfdafdsadafsa fdadfaafdasfadsfdasfdas dfdaf
+          fdadfafdafda
+        </div>
+      </div>
+      <div className={styles.chat_row_they}>
+        <div className={`${styles.conversation} ${styles.they}`}>
+          fdsafsdasdfdasfadsfdsa fdasfdafdsadafsa fdadfaafdasfadsfdasfdas dfdaf
+          fdadfafdafda
+        </div>
+      </div>
+      <div className={styles.chat_row_you}>
+        <div className={`${styles.conversation} ${styles.you}`}>
+          fdsafsdasdfdasfadsfdsa fdasfdafdsadafsa fdadfaafdasfadsfdasfdas dfdaf
+          fdadfafdafda
+        </div>
+      </div>
+      <div className={styles.chat_row_they}>
+        <div className={`${styles.conversation} ${styles.they}`}>
+          fdsafsdasdfdasfadsfdsa fdasfdafdsadafsa fdadfaafdasfadsfdasfdas dfdaf
+          fdadfafdafda
+        </div>
+      </div>
+      <div className={styles.chat_row_you}>
+        <div className={`${styles.conversation} ${styles.you}`}>
+          fdsafsdasdfdasfadsfdsa fdasfdafdsadafsa fdadfaafdasfadsfdasfdas dfdaf
+          fdadfafdafda
+        </div>
+      </div>
+      <div className={styles.chat_row_they}>
+        <div className={`${styles.conversation} ${styles.they}`}>
+          fdsafsdasdfdasfadsfdsa fdasfdafdsadafsa fdadfaafdasfadsfdasfdas dfdaf
+          fdadfafdafda
+        </div>
+      </div>
+      <div className={styles.chat_row_you}>
+        <div className={`${styles.conversation} ${styles.you}`}>
+          fdsafsdasdfdasfadsfdsa fdasfdafdsadafsa fdadfaafdasfadsfdasfdas dfdaf
+          fdadfafdafda
+        </div>
+      </div>
+      <div className={styles.chat_row_they}>
+        <div className={`${styles.conversation} ${styles.they}`}>
+          fdsafsdasdfdasfadsfdsa fdasfdafdsadafsa fdadfaafdasfadsfdasfdas dfdaf
+          fdadfafdafda
+        </div>
+      </div>
+    </>
+  );
+}
+
 export function ChatRoom() {
   useEffect(() => {
     return function cleanUp() {
@@ -14,7 +69,7 @@ export function ChatRoom() {
         <h1>header</h1>
       </header>
       <div className={styles.chat_room_content}>
-        <h1>header</h1>
+        <TalkList />
       </div>
       <footer className={styles.chat_room_footer}>
         <h1>header</h1>

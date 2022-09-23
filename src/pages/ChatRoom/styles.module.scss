@@ -24,6 +24,10 @@
         border-radius: 4px;
         padding: 10px;
         overflow: auto;
+        flex-direction: column-reverse;
+        gap: 15px;
+        display: flex;
+        position: relative;
     }
     .chat_room_footer {
         background: $White;
@@ -32,4 +36,66 @@
         padding: 10px;
         border-radius: 4px;
     }
+}
+
+.conversation {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    word-break: break-all;
+    border-radius: 15px;
+    background-color: $DodgeBlue;
+    color: $White;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 14px;
+    font-family: $RobotoMedium;
+}
+
+.you {
+    &::before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 15px solid $DodgeBlue;
+        border-right: 15px solid transparent;
+        border-top: 15px solid $DodgeBlue;
+        border-bottom: 15px solid transparent;
+        right: -16px;
+        top: 0px;
+    }
+}
+
+.they {
+    &::before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 15px solid transparent;
+        border-right: 15px solid $DodgeBlue;
+        border-top: 15px solid $DodgeBlue;
+        border-bottom: 15px solid transparent;
+        left: -16px;
+        top: 0px;
+    }
+}
+
+.chat_row_you,
+.chat_row_they {
+    display: flex;
+    padding: 20px;
+}
+
+.chat_row_you {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.chat_row_they {
+    justify-content: flex-start;
+    align-items: center;
 }
