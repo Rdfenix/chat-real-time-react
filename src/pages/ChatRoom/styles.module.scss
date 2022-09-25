@@ -15,6 +15,15 @@
         display: flex;
         border-radius: 4px;
         padding: 10px;
+        gap: 10px;
+        justify-content: flex-start;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color: $Black;
+            padding: 10px;
+        }
     }
 
     .chat_room_content {
@@ -35,6 +44,42 @@
         height: 15%;
         padding: 10px;
         border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .chat_input {
+            width: 80%;
+            height: 50px;
+            padding: 10px;
+            font-family: $RobotoMediumItalic;
+            font-size: 15px;
+            border-radius: 4px;
+            border: 1px solid $LightGrey;
+
+            &:focus {
+                border-color: $Gray;
+                outline: none;
+            }
+        }
+
+        .chat_send_message {
+            width: 130px;
+            height: 50px;
+            line-height: 50px;
+            cursor: pointer;
+            background-color: $CornflowerBlue;
+            color: $White;
+            border: none;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-family: $RobotoBold;
+            font-size: 17px;
+
+            &:hover {
+                background-color: $MidnightBlue;
+            }
+        }
     }
 }
 
@@ -87,15 +132,21 @@
 .chat_row_you,
 .chat_row_they {
     display: flex;
-    padding: 20px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    .chat_user_name {
+        font-family: $RobotoMediumItalic;
+        font-size: 12px;
+    }
 }
 
 .chat_row_you {
-    justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .chat_row_they {
-    justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import {
   faComment,
@@ -12,6 +12,7 @@ import logoIcon from "../../icons/Let_s_Talk.png";
 
 export function Layout() {
   const [opened, setOpened] = useState(false);
+  const navigate = useNavigate();
 
   function toogleSideBar(): void {
     setOpened(!opened);
@@ -19,6 +20,10 @@ export function Layout() {
 
   function setActiveClass(prop: { isActive: boolean }): string {
     return prop.isActive ? styles.active_link : "";
+  }
+
+  function logout(): void {
+    navigate("/signin", { replace: true });
   }
 
   const activeAdded = opened
@@ -59,7 +64,7 @@ export function Layout() {
             </div>
           </div>
           <div className={styles.logout}>
-            <button className={styles.logout_button}>
+            <button className={styles.logout_button} onClick={() => logout()}>
               <FontAwesomeIcon icon={faDoorOpen} inverse fontSize={20} />
             </button>
           </div>
