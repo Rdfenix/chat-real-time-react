@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import styles from "./styles.module.scss";
 import {
   faComment,
@@ -15,6 +15,7 @@ import { StateReducer } from "../../interface/reduxInterface";
 export function Layout() {
   const [opened, setOpened] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const userData = useSelector((state: StateReducer) => state.UserReducer);
 
   function toogleSideBar(): void {
@@ -34,6 +35,12 @@ export function Layout() {
     : ` ${styles.sidebar}`;
 
   const headerText = opened ? "Close" : "Open";
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/home", { replace: true });
+    }
+  }, [location.pathname, navigate]);
 
   return (
     <>
