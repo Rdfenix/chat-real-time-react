@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormSignInSignUp } from "../../shared/components/sign_in_sign_up/FormSignInSignUp";
 import { Link } from "react-router-dom";
 import { signinAction } from "./../../core/action";
-import { SignIn } from "../../shared/interface/login";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ function LoginForm() {
   }
 
   function sendLogin(): void {
-    signinAction(signInData);
+    dispatch(signinAction(signInData));
   }
 
   return (
