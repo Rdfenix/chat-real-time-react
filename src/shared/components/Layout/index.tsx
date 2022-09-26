@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import {
@@ -9,10 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logoIcon from "../../icons/Let_s_Talk.png";
+import { StateReducer } from "../../interface/reduxInterface";
 
 export function Layout() {
   const [opened, setOpened] = useState(false);
   const navigate = useNavigate();
+  const userData = useSelector((state: StateReducer) => state.UserReducer);
 
   function toogleSideBar(): void {
     setOpened(!opened);
@@ -58,8 +61,8 @@ export function Layout() {
             <div className={styles.profile_details}>
               <FontAwesomeIcon icon={faCircleUser} inverse fontSize={30} />
               <div className={styles.user_detail}>
-                <span>User</span>
-                <span>Login</span>
+                <span>{userData.name}</span>
+                <span>{userData.user}</span>
               </div>
             </div>
           </div>

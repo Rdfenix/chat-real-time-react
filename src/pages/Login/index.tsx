@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormSignInSignUp } from "../../shared/components/sign_in_sign_up/FormSignInSignUp";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signinAction } from "./../../core/action";
+import { StateReducer } from "../../shared/interface/reduxInterface";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -57,6 +58,17 @@ function LoginForm() {
 }
 
 export function LoginPage() {
+  const userIsValidated = useSelector(
+    (state: StateReducer) => state.ValidateUserReducer
+  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userIsValidated) {
+      navigate("/home", { replace: true });
+    }
+  });
+
   return (
     <section id={styles.login_section}>
       <LoginForm />
