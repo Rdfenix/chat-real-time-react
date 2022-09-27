@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import styles from "./styles.module.scss";
+import { StateReducer } from "../../shared/interface/reduxInterface";
 
 type ChatRoomCardProps = {
   deleteChat: () => void;
@@ -23,7 +25,10 @@ function ChatRoomCard({ deleteChat, chatTitle, chatId }: ChatRoomCardProps) {
 }
 
 export function Chat() {
+  const chats = useSelector((state: StateReducer) => state.ChatRoomsReducer);
+
   function deleteChatRoom(data: string): void {
+    /** invok saga method to delete chat */
     console.log(data);
   }
 
@@ -35,15 +40,18 @@ export function Chat() {
       </header>
       <div className={styles.chat_info}>
         <span>
-          Qtd of chats <b>(0)</b>
+          Qtd of chats <b>({chats.length})</b>
         </span>
       </div>
       <div className={styles.chat_wrapper}>
-        <ChatRoomCard
-          chatTitle="Chat Title"
-          chatId="test"
-          deleteChat={() => deleteChatRoom("test")}
-        />
+        {chats.map((chat) => (
+          <ChatRoomCard
+            key={chat.chatId}
+            chatTitle={chat.chatName}
+            chatId={chat.chatId}
+            deleteChat={() => deleteChatRoom(chat.chatId)}
+          />
+        ))}
       </div>
     </section>
   );

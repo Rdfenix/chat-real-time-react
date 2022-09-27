@@ -1,4 +1,4 @@
-import { SIGN_UP, SIGN_IN, LOGOUT, SET_USER, IS_VALID } from './actionType'
+import { SIGN_UP, SIGN_IN, LOGOUT, SET_USER, IS_VALID, GET_USER } from './actionType'
 import { SignIn, SignUp, User } from '../../shared/interface/login'
 
 export const signinAction = (payload: SignIn): any => ({
@@ -13,6 +13,10 @@ export const signUpAction = (payload: SignUp) => ({
 
 export const logoutAction = () => ({
     type: LOGOUT
+})
+
+export const getUserAction = (): any => ({
+    type: GET_USER
 })
 
 export const setUserAction = (payload: User): any => ({

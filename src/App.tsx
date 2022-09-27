@@ -11,8 +11,9 @@ import { Navigate } from "react-router-dom";
 
 function RequireAuth() {
   function getUserLocalstorage(): boolean {
-    const userLoggerd = localStorage.getItem("USER_VALIDATE");
-    return Boolean(userLoggerd);
+    const userLoggerd = String(localStorage.getItem("USER_VALIDATE"));
+    const user = !!JSON.parse(userLoggerd);
+    return user;
   }
 
   return getUserLocalstorage() ? <Layout /> : <Navigate to="signin" replace />;

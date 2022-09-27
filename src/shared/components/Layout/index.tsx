@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import styles from "./styles.module.scss";
 import {
@@ -11,12 +11,24 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logoIcon from "../../icons/Let_s_Talk.png";
 import { StateReducer } from "../../interface/reduxInterface";
+import { getUserAction } from "../../../core/action";
 
 export function Layout() {
   const [opened, setOpened] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
   const userData = useSelector((state: StateReducer) => state.UserReducer);
+
+  const getUser = useCallback(() => dispatch(getUserAction()), [dispatch]);
+  const userNav = useCallback(
+    () => navigate("/home", { replace: true }),
+    [navigate]
+  );
+  const userLogout = useCallback(
+    () => navigate("/signin", { replace: true }),
+    [navigate]
+  );
 
   function toogleSideBar(): void {
     setOpened(!opened);
@@ -27,7 +39,8 @@ export function Layout() {
   }
 
   function logout(): void {
-    navigate("/signin", { replace: true });
+    userLogout();
+    localStorage.clear();
   }
 
   const activeAdded = opened
@@ -37,10 +50,14 @@ export function Layout() {
   const headerText = opened ? "Close" : "Open";
 
   useEffect(() => {
+    getUser();
+  }, [getUser]);
+
+  useEffect(() => {
     if (location.pathname === "/") {
-      navigate("/home", { replace: true });
+      userNav();
     }
-  }, [location.pathname, navigate]);
+  }, [location.pathname, userNav]);
 
   return (
     <>

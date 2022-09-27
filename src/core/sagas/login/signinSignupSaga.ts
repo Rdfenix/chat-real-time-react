@@ -1,13 +1,12 @@
 import { all, put, takeLatest } from 'redux-saga/effects'
-import { setUserAction, setUserValid } from '../../action';
+import { setUserValid } from '../../action';
 import { SIGN_IN } from '../../action/actionType'
-
 
 function* getLogin(action: any) {
     try {
-
-        yield localStorage.setItem("USER_VALIDATE", "true")
-        yield put(setUserAction({ name: 'Rudnei Oliveira', user: action.payload.user }))
+        /** place to create method to control login */
+        const userData = { name: 'Rudnei Oliveira', user: action.payload.user }
+        yield localStorage.setItem("USER_VALIDATE", JSON.stringify(userData))
         yield put(setUserValid(true))
     } catch (error) {
         console.log(error)
