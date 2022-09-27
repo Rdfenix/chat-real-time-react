@@ -2,7 +2,7 @@ import React from "react";
 
 import { Routes, Route } from "react-router-dom";
 import { Chat } from "./pages/Chat";
-import { ChatRoom } from "./pages/ChatRoom";
+import { ChatRoomPage } from "./pages/ChatRoom";
 import { Home } from "./pages/Home";
 import { LoginPage } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
@@ -27,7 +27,7 @@ function App() {
       <Route path="/" element={<RequireAuth />}>
         <Route path="home" element={<Home />} />
         <Route path="chat" element={<Chat />} />
-        <Route path="chat/room/:slug" element={<ChatRoom />} />
+        <Route path="chat/room/:chatId" element={<ChatRoomPage />} />
       </Route>
     </Routes>
   );
