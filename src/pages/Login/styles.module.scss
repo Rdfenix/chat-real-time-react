@@ -43,6 +43,7 @@ form {
             color: $White;
             font-family: $RobotoBold;
             cursor: pointer;
+            padding: 16px;
 
             &:hover {
                 background-color: $MidnightBlue;
@@ -58,6 +59,8 @@ form {
             gap: 10px;
             padding: 0 10px;
             color: $Black;
+            font-size: 17px;
+            align-items: center;
         }
     }
 }
