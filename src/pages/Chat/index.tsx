@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -26,10 +26,22 @@ function ChatRoomCard({ deleteChat, chatTitle, chatId }: ChatRoomCardProps) {
 
 export function Chat() {
   const chats = useSelector((state: StateReducer) => state.ChatRoomsReducer);
+  let elementRef: any = useRef();
 
   function deleteChatRoom(data: string): void {
     /** invok saga method to delete chat */
     console.log(data);
+  }
+
+  function toggleArea() {
+    if (
+      elementRef.current.style.maxHeight &&
+      elementRef.current.style.maxHeight !== "0px"
+    ) {
+      elementRef.current.style.maxHeight = "0px";
+    } else {
+      elementRef.current.style.maxHeight = `${elementRef.current.scrollHeight}px`;
+    }
   }
 
   return (
@@ -38,6 +50,18 @@ export function Chat() {
         <h1>Chat's room</h1>
         <h2>Select or create a chat room</h2>
       </header>
+      <div className={styles.chat_create_area}>
+        <button
+          className={styles.chat_toggle_create_area}
+          onClick={() => toggleArea()}
+        >
+          Create chat room
+        </button>
+        <div ref={elementRef} className={styles.chat_create_input}>
+          <input type="text" name="" id="" placeholder="Room name" />
+          <button>submits</button>
+        </div>
+      </div>
       <div className={styles.chat_info}>
         <span>
           Qtd of chats <b>({chats.length})</b>
