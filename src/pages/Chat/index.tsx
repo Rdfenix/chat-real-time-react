@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import styles from "./styles.module.scss";
@@ -26,11 +26,22 @@ function ChatRoomCard({ deleteChat, chatTitle, chatId }: ChatRoomCardProps) {
 
 export function Chat() {
   const chats = useSelector((state: StateReducer) => state.ChatRoomsReducer);
+  const [chatName, setChatName] = useState("");
   let elementRef: any = useRef();
 
   function deleteChatRoom(data: string): void {
     /** invok saga method to delete chat */
     console.log(data);
+  }
+
+  function setNameOfRoom(data: string) {
+    setChatName(data);
+  }
+
+  function createRoom() {
+    if (chatName) {
+      /** action to create chat room  */
+    }
   }
 
   function toggleArea() {
@@ -40,7 +51,9 @@ export function Chat() {
     ) {
       elementRef.current.style.maxHeight = "0px";
     } else {
-      elementRef.current.style.maxHeight = `${elementRef.current.scrollHeight}px`;
+      elementRef.current.style.maxHeight = `${
+        elementRef.current.scrollHeight + 30
+      }px`;
     }
   }
 
@@ -55,11 +68,23 @@ export function Chat() {
           className={styles.chat_toggle_create_area}
           onClick={() => toggleArea()}
         >
+          <FontAwesomeIcon icon={faPlus} />
           Create chat room
         </button>
         <div ref={elementRef} className={styles.chat_create_input}>
-          <input type="text" name="" id="" placeholder="Room name" />
-          <button>submits</button>
+          <input
+            className={styles.chat_input_name}
+            type="text"
+            value={chatName}
+            onChange={(e) => setNameOfRoom(e.target.value)}
+            placeholder="Room name"
+          />
+          <button
+            className={styles.chat_submit_button}
+            onClick={() => createRoom()}
+          >
+            Submit
+          </button>
         </div>
       </div>
       <div className={styles.chat_info}>
